@@ -4,9 +4,13 @@ import { prettyJSON } from "hono/pretty-json";
 const app = new Hono();
 
 let testPosts = [
-  { id: "1", title: "Post 1", content: "This is post 1" },
-  { id: "2", title: "Post 2", content: "This is post 2" },
-  { id: "3", title: "Post 3", content: "This is post 3" },
+  { id: "1", title: "PeachTech", content: "我が誇らしきコミュニティ" },
+  {
+    id: "2",
+    title: "頂",
+    content: "誇り高きスーパーエンジニアサイヤ人の集まり",
+  },
+  { id: "3", title: "Leapcode", content: "もっと稼げ" },
 ];
 app.use("*", prettyJSON());
 
