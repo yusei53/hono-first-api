@@ -52,4 +52,17 @@ app.put("/posts/:id", async (c) => {
   return c.json(testPosts[index]);
 });
 
+app.delete("/posts/:id", async (c) => {
+  const id = c.req.param("id");
+  const index = testPosts.findIndex((p) => p.id === id);
+
+  if (index === -1) {
+    return c.json({ message: "not found" }, 404);
+  }
+
+  testPosts = testPosts.filter((p) => p.id !== id);
+
+  return c.json({ message: "投稿を削除しました" });
+});
+
 export default app;
