@@ -38,4 +38,18 @@ app.post("/posts", async (c) => {
   return c.json(newPost, 201);
 });
 
+app.put("/posts/:id", async (c) => {
+  const id = c.req.param("id");
+  const index = testPosts.findIndex((p) => p.id === id);
+
+  if (index === -1) {
+    return c.json({ message: "not found" }, 404);
+  }
+
+  const { title, content } = await c.req.json();
+  testPosts[index] = { ...testPosts[index], title, content };
+
+  return c.json(testPosts[index]);
+});
+
 export default app;
